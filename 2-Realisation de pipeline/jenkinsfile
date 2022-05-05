@@ -1,5 +1,13 @@
 pipeline {
   agent any
+  stage('Test connexion') {
+           agent any
+           steps {
+              script {
+               echo "helloworld"
+              }
+           }
+      }
 
   post {
     always {
