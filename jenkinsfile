@@ -5,7 +5,8 @@ pipeline {
   environment {
        ID_DOCKER = "filrougegroupe2"
        IMAGE_NAME = "twitter-static-website"
-       IMAGE_TAG = "v4"  
+       IMAGE_TAG = "v4" 
+       DOCKERHUB_PASSWORD = credentials('dockerhubpassword') 
       
      }
 
@@ -22,9 +23,6 @@ pipeline {
            }
       }
   
-
-
-
 
  stage('Build image') {
            agent any
@@ -68,7 +66,18 @@ pipeline {
              }
           }
      }
-     
+
+    stage ('Login and Push Image on docker hub') {
+          agent any
+          steps {
+             script {
+               sh '''
+                   echo $DOCKERHUB_PASSWORD | docker login -u $ID_DOCKER --password-stdin
+                   docker push ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG
+               '''
+             }
+          }
+      }    
 
 
 
