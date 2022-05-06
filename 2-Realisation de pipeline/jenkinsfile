@@ -30,7 +30,7 @@ pipeline {
            agent any
            steps {
               script {
-               sh 'docker build -t ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG 2-Realisation de pipeline/creation Dockerfile/'
+               sh 'docker build -t ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG .'
               }
            }
       }
