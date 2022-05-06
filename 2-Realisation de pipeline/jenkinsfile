@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  stages {
   stage('Test connexion') {
            agent any
            steps {
@@ -8,7 +7,6 @@ pipeline {
                echo "helloworld"
               }
            }
-      }
       }
 
   post {
