@@ -6,7 +6,7 @@ pipeline {
        ID_DOCKER = "filrougegroupe2"
        IMAGE_NAME = "twitter-static-website"
        IMAGE_TAG = "v4"  
-       */ DOCKERHUB_PASSWORD = credentials('dockerhubpassword') */
+
      }
 
 
