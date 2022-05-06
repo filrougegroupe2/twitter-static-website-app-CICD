@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stage('Test connexion') {
+           agent any
+           steps {
+              script {
+               echo "helloworld"
+              }
+           }
+      }
+
+  post {
+    always {
+      discordSend description: 'Jenkins Pipeline Build', webhookURL: 'https://discord.com/api/webhooks/971457836276121670/Z-aLx7cJULq_p9nwlXhqOldM_fiecpxgmuvNdubxHxqha-uvkFhlXO3XW_mytk_GmYmj'
+    }
+  }
+}
