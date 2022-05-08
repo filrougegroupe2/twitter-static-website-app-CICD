@@ -77,7 +77,7 @@ pipeline {
              script {
                sh '''
                    
-                   docker tag $IMAGE_NAME:$IMAGE_TAG jenkins:5000/Groupe2/$IMAGE_NAME:$IMAGE_TAG
+                   docker tag $IMAGE_NAME:$IMAGE_TAG jenkins:5000/groupe2/$IMAGE_NAME:$IMAGE_TAG
                    docker push localhost:5000/$IMAGE_NAME:$IMAGE_TAG
                    docker push jenkins:5000/Groupe2/$IMAGE_NAME:$IMAGE_TAG
                '''
