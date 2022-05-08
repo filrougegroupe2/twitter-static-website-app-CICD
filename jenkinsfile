@@ -3,10 +3,9 @@ pipeline {
 
 
   environment {
-       ID_DOCKER = "filrougegroupe2"
+       
        IMAGE_NAME = "twitter-static-website"
-       IMAGE_TAG = "v4" 
-       DOCKERHUB_PASSWORD = credentials('dockerhubpassword') 
+       IMAGE_TAG = "v2"  
       
      }
 
@@ -24,11 +23,14 @@ pipeline {
       }
   
 
+
+
+
  stage('Build image') {
            agent any
            steps {
               script {
-               sh 'docker build -t ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG .'
+               sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
               }
            }
       }
@@ -39,7 +41,7 @@ pipeline {
             steps {
                script {
                  sh '''
-                    docker run --name $IMAGE_NAME -d -p 80:80 -e PORT=80 ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p 80:80 -e PORT=80 $IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
@@ -67,17 +69,22 @@ pipeline {
           }
      }
 
-    stage ('Login and Push Image on docker hub') {
+
+
+      stage ('Login and Push Image on a local registry') {
           agent any
           steps {
              script {
                sh '''
-                   echo $DOCKERHUB_PASSWORD | docker login -u $ID_DOCKER --password-stdin
-                   docker push ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG
+                   docker tag $IMAGE_NAME:$IMAGE_TAG localhost:5000/$IMAGE_NAME:$IMAGE_TAG
+                   docker push localhost:5000/$IMAGE_NAME:$IMAGE_TAG
                '''
              }
           }
-      }    
+      }     
+     
+     
+     
 
 
 
