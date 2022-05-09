@@ -5,7 +5,7 @@ pipeline {
   environment {
        
        IMAGE_NAME = "twitter-static-website"
-       IMAGE_TAG = "v2"  
+       IMAGE_TAG = "v5"  
       
      }
 
@@ -76,8 +76,10 @@ pipeline {
           steps {
              script {
                sh '''
-                   docker tag $IMAGE_NAME:$IMAGE_TAG localhost:5000/$IMAGE_NAME:$IMAGE_TAG
-                   docker push localhost:5000/$IMAGE_NAME:$IMAGE_TAG
+                   
+                   docker tag $IMAGE_NAME:$IMAGE_TAG jenkins:5000/groupe2/$IMAGE_NAME:$IMAGE_TAG
+    
+                   docker push jenkins:5000/groupe2/$IMAGE_NAME:$IMAGE_TAG
                '''
              }
           }
