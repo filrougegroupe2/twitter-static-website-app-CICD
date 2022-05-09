@@ -94,7 +94,7 @@ pipeline {
             steps {
                 sh '''
                      cp  $PRIVATE_KEY  id_rsa
-                     chmod 600 id_rsa
+                     sudo chmod 600 id_rsa
                 '''
             }
      }    
