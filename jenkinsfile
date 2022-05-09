@@ -94,7 +94,7 @@ pipeline {
             steps {
                 sh '''
                      cp  $PRIVATE_KEY  id_rsa_jenkins
-                     chmod 600 id_rsa_jenkins
+                     chmod 644 id_rsa_jenkins
                 '''
             }
      }    
