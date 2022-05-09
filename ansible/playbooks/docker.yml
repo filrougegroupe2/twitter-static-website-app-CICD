@@ -1,6 +1,6 @@
 ---
 - name: Install docker on a Centos 7 machine
-  hosts: "{{ env }}"
+  hosts: "worker1"
   become: yes
   
   pre_tasks:
