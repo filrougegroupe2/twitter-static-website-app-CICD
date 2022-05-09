@@ -93,8 +93,8 @@ pipeline {
             }
             steps {
                 sh '''
-                     cp  $PRIVATE_KEY  id_rsa_jenkins
-                     chmod 644 id_rsa_jenkins
+                     cp  $PRIVATE_KEY  id_rsa
+                     chmod 644 id_rsa
                 '''
             }
      }    
@@ -107,7 +107,7 @@ pipeline {
            steps {
                script {
                  sh '''
-                     cd $WORKSPACE/ansible && ansible-playbook deploy_app.yml  --private-key ./id_rsa_jenkins                  
+                     cd $WORKSPACE/ansible && ansible-playbook deploy_app.yml  --private-key ./id_rsa                
                  '''
                }
            }
