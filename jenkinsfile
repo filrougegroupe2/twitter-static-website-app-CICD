@@ -134,10 +134,10 @@ pipeline {
               heroku container:push -a $PRODUCTION web
               heroku container:release -a $PRODUCTION web
             '''
-          }
-        }
+          
+        
      
-  
+  }
 }
 
 
